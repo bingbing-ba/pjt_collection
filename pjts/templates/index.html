@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pjt 모아보기</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+  <div class="container d-flex">
+    <div class="nav-left">
+      <div class="sticky-top">
+        <label for="appNameInput">앱 이름</label>
+        <input type="text" id="appNameInput" value="community">
+      </div>
+      <ul class="nav flex-column nav-pills">
+        {% for student, port in students_with_port %}
+          <li class="nav-item">
+            <a class="nav-link students" data-port="{{port}}">{{ student }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="iframe-container">
+      <a href="" id="iframeUrl" target="_blank">새 탭에서 열기</a>
+      <iframe class="iframe" src="" id="pjtIframe" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="{% static 'index.js' %}"></script>
+</body>
+</html>

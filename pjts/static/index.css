@@ -1,0 +1,37 @@
+body { 
+  height:100vh;
+  overflow: hidden;
+}
+.nav-item:hover {
+  cursor: pointer;
+}
+.iframe {
+  width: 100%;
+  height: 95%;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.container {
+  margin-top: 10px;
+}
+.iframe-container {
+  width: 100%;
+}
+#iframeUrl {
+  width:100%;
+}
+#appNameInput {
+  width:100%;
+}
+.nav-left {
+  margin-right: 10px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.nav-left::-webkit-scrollbar {
+  display: none;
+}
+.sticky-top {
+  background-color: white;
+}
