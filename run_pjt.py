@@ -9,18 +9,23 @@ students.sort()
 students_with_port = [(student, idx) for idx, student in enumerate(students)]
 
 # 학생들 pjt에 X-Frame-Option관련 장고 default middleware 해제
-for student in students:
-    settings_file_url = pjt_dir / student / target_pjt / 'settings.py'
+def deactivate_XFrameOption():
+    for student in students:
+        settings_file_url = pjt_dir / student / target_pjt / 'settings.py'
+        
+        new_lines = []
+        try:
+            with open(settings_file_url) as f:
+                lines = f.readlines()
+                for line in lines:
+                    if 'django.middleware.clickjacking.XFrameOptionsMiddleware' in line:
+                        continue
+                    new_lines.append(line)
+            with open(settings_file_url, 'w') as f:
+                f.writelines(new_lines)
+        except:
+            print(student, '프로젝트 구조에 문제가 있을 수 있음')
     
-    new_lines = []
-    with open(settings_file_url) as f:
-        lines = f.readlines()
-        for line in lines:
-            if "    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n" in line:
-                continue
-            new_lines.append(line)
-    with open(settings_file_url, 'w') as f:
-        f.writelines(new_lines)
 
 
 def start_server(student_with_port):
@@ -30,6 +35,10 @@ def start_server(student_with_port):
     port_num = str(idx).zfill(2)
     os.system(f'python manage.py runserver 80{port_num}')
 
-# multiprocessing
-pool = Pool(len(students))
-pool.map(start_server, students_with_port)
+if __name__ == '__main__':
+    deactivate_XFrameOption()
+
+    # multiprocessing
+    pool = Pool(len(students))
+    pool.map(start_server, students_with_port)
+
