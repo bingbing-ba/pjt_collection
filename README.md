@@ -1,6 +1,6 @@
 # 관통 PJT 모아 보기
 
-이 django pjt는 학생들의 ssafy 관통 프로젝트를 한 페이지에서 모아 보기 위한 pjt입니다.
+이 django pjt는 학생들의 ssafy 관통 프로젝트를 한 페이지에서 모아 보기 위한 pjt입니다. Shout out to 아이디어 제공자 @tony
 
 ## 사용 예시
 
