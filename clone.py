@@ -20,19 +20,22 @@ def check_directory(now_dir):
                     os.system(f'rm -rf {dirpath}_sample/')
                 return True
 
+success = []
+failure = []
 
 for name, gitlab_name in get_students():
     print(f'========== {name} ==========')
-    # os.system(f'mkdir -p ./{DIR_NAME}/{name}')
-    os.system(f'git clone {BASE_URL}/{gitlab_name}/{DIR_NAME}.git ./{DIR_NAME}/{name}')
-
-    # manage.py의 경로를 확인합니다.
-    check_directory(f'./{DIR_NAME}/{name}/')
-    
-    # migration 과정이 필요한 경우
-    os.system(f'python ./{DIR_NAME}/{name}/manage.py makemigrations')
-    os.system(f'python ./{DIR_NAME}/{name}/manage.py migrate')
-
+    result = os.system(f'git clone {BASE_URL}/{gitlab_name}/{DIR_NAME}.git ./{DIR_NAME}/{name}')
+    if result == 0:
+        success.append(name)
+        # manage.py의 경로를 확인합니다.
+        check_directory(f'./{DIR_NAME}/{name}/')
+        
+        # migration 과정이 필요한 경우
+        os.system(f'python ./{DIR_NAME}/{name}/manage.py makemigrations')
+        os.system(f'python ./{DIR_NAME}/{name}/manage.py migrate')
+    else:
+        failure.append(name)
     print()
 
 print((f'========== 총 {len(success)}명 완료 ✅ =========='))
