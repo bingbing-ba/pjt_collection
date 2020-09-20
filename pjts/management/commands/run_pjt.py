@@ -34,9 +34,8 @@ def start_server(students_with_port, target_pjt, pjt_dir):
     student_pjt_dir = pjt_dir / student
     os.chdir(student_pjt_dir)
     port_num = str(idx).zfill(2)
-    os.system(
-        f'export DJANGO_SETTINGS_MODULE={target_pjt}.settings && python manage.py runserver 80{port_num}'
-    )
+    os.environ['DJANGO_SETTINGS_MODULE'] = f'{target_pjt}.settings'
+    os.system(f'python manage.py runserver 80{port_num}')
 
 
 def start_main_server():
