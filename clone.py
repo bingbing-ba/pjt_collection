@@ -34,3 +34,9 @@ for name, gitlab_name in get_students():
     os.system(f'python ./{DIR_NAME}/{name}/manage.py migrate')
 
     print()
+
+print((f'========== 총 {len(success)}명 완료 ✅ =========='))
+if len(failure) != 0:
+    print((f'========== 총 {len(failure)}명 실패 🚨 =========='))
+    for name in failure:
+        print(f'{name} 학생 저장소 확인 바랍니다.')
