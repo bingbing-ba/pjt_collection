@@ -272,3 +272,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,python,django,visualstudiocode
+
+pjt[0-9][0-9]/
+students.csv
