@@ -38,11 +38,11 @@ def start_server(students_with_port, target_pjt, pjt_dir):
     os.system(f'python manage.py runserver 80{port_num}')
 
 
-def start_main_server():
-    os.system('python manage.py runserver 8080')
+def start_main_server(port):
+    os.system(f'python manage.py runserver {port}')
 
 
-def start_multiprocessing(target_pjt):
+def start_multiprocessing(target_pjt, port):
     BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
     pjt_dir = (Path(BASE_DIR) / target_pjt).absolute()
 
@@ -54,7 +54,7 @@ def start_multiprocessing(target_pjt):
         proc.start()
     
     # start the main server
-    proc = Process(target=start_main_server)
+    proc = Process(target=start_main_server, args=(port,))
     proc.start()
 
 
