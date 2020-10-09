@@ -17,13 +17,18 @@
       <ul class="nav flex-column nav-pills">
         {% for student, port in students_with_port %}
           <li class="nav-item">
-            <a class="nav-link students" data-port="{{port}}">{{ student }}</a>
+            <a class="nav-link students" data-port="{{port}}" data-name="{{student}}">{{ student }}</a>
           </li>
         {% endfor %}
       </ul>
     </div>
     <div class="iframe-container">
       <a href="" id="iframeUrl" target="_blank">새 탭에서 열기</a>
+      <div class="d-flex align-items-center">
+        <div class="toggle"><input class="tgl tgl-light" id="readme" type="checkbox"/>
+        <label class="tgl-btn" for="readme"></label></div>
+        <label for="readme" class="ml-2">README 보기</label>
+      </div>
       <iframe class="iframe" src="" id="pjtIframe" frameborder="0"></iframe>
     </div>
   </div>

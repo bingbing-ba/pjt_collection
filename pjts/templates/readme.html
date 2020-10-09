@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>readme</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/default.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad()</script>
+  </head>
+  <body>
+    <div id="container" style="margin: 20px"></div>
+    <pre id="origin" style="display: none">{{readme}}</pre>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
+      integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'readme.js' %}"></script>
+  </body>
+</html>
