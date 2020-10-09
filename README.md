@@ -75,6 +75,7 @@
 
 - 1.1 (20.10.9)
   - 학생들의 README를 확인할 수 있는 토글 버튼 추가
+  - requirements.txt 수정 (by @tony)
 - 1.0 (20.9.21)
   - 학생들 서버 켜는 명령어와 메인 서버 켜는 명령어 통합(by @eric)
   - 학생들 프로젝트 clone과정 추가 (by @eric, @tony)
