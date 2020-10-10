@@ -12,7 +12,6 @@ def find_markdown(now_dir):
     for dirpath, dirnames, filenames in os.walk(now_dir.__str__()):
         for filename in filenames:
             if filename[-3:] == '.md':
-                print('markdown을 찾았습니다 :', dirpath, dirnames)
                 return filename
 
     print('Markdown 파일이 없습니다. default name을 반환합니다.')
