@@ -14,7 +14,6 @@ def find_markdown(now_dir):
             if filename[-3:] == '.md':
                 return filename
 
-    print('Markdown 파일이 없습니다. default name을 반환합니다.')
     return 'README.md'
 
 
