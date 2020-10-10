@@ -9,7 +9,6 @@ def find_markdown(now_dir):
             if filename.lower() == 'readme.md':
                 return filename
     
-    print('README 파일이 없습니다. Markdown 파일을 재탐색합니다.')
     for dirpath, dirnames, filenames in os.walk(now_dir.__str__()):
         for filename in filenames:
             if filename[-3:] == '.md':
