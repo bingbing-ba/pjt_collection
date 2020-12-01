@@ -12,7 +12,6 @@ def deactivate_XFrameOption(target_pjt, pjt_dir):
     
     for student in students:
         settings_file_url = pjt_dir / student / target_pjt / 'settings.py'
-        
         new_lines = []
         try:
             with open(settings_file_url) as f:
@@ -25,7 +24,7 @@ def deactivate_XFrameOption(target_pjt, pjt_dir):
                 f.writelines(new_lines)
         except:
             print(student, '프로젝트 구조에 문제가 있을 수 있음')
-    
+
     return students, students_with_port
 
 
@@ -35,7 +34,7 @@ def start_server(students_with_port, target_pjt, pjt_dir):
     os.chdir(student_pjt_dir)
     port_num = str(idx).zfill(2)
     os.environ['DJANGO_SETTINGS_MODULE'] = f'{target_pjt}.settings'
-    os.system(f'python manage.py runserver 80{port_num}')
+    os.system(f'python manage.py runserver 80{port_num} >> server.log 2>&1')
 
 
 def start_main_server(port):
@@ -52,7 +51,6 @@ def start_multiprocessing(target_pjt, port):
     for idx in range(len(students)):
         proc = Process(target=start_server, args=(students_with_port[idx], target_pjt, pjt_dir))
         proc.start()
-    
     # start the main server
     proc = Process(target=start_main_server, args=(port,))
     proc.start()
