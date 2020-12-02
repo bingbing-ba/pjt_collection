@@ -2,9 +2,11 @@
 
 이 django pjt는 학생들의 ssafy 관통 프로젝트를 한 페이지에서 모아 보기 위한 pjt입니다.
 
-[ver1.2가 12월 2일 부로 업데이트 되었습니다!](#업데이트이력)
+[ver1.2가 12월 2일 부로 업데이트 되었습니다!](#업데이트 이력)
 
 문서에서 이번에 변경된 사항에 대한 항목은 :arrow_up: 아이콘을 붙여두었습니다.
+
+
 
 ## contributors
 
@@ -17,9 +19,13 @@
   - 원래 두 번이었던 명령어 스텝을 하나로 만들어 주셨습니다.
   - `clone` 과정과 `runproject`과정에서 이쁜 터미널 출력(?)을 만들어 주셨습니다.
 
+
+
 ## 사용 예시
 
 ![example](README.assets/example.png)
+
+
 
 ## 사전 준비 사항
 
@@ -32,6 +38,8 @@
 - google spread sheet에 아래와 같이 학생들의 이름과 labssafy 유저네임을 준비합니다.
 
   ![studentSpreadSheet](README.assets/studentSpreadSheet.png)
+
+
 
 ## 사용법
 
@@ -82,9 +90,9 @@
       - 예시: `$ python manage.py runseed pjt05`
     - 학생 별 시드 이력은 각 학생들의 프로젝트 폴더에 `seed.log`로 저장됩니다.
 
-## 업데이트 이력
 
-## 업데이트이력
+
+## 업데이트 이력
 
 - 1.2 (20.12.2)
   - clone.py 실행 시 학생들 각 pjt에 superuser 생성 (유저네임:happy, password:1234)
@@ -103,6 +111,8 @@
   - 학생들 리스트 클릭하면 해당 앱 index 페이지 뜨는 기능
   - app이름 수정하면 해당 페이지로 이동
   - 새 탭에서 열기 버튼을 통해 지금 iframe에 떠 있는 페이지 새 탭에서 열기 가능
+
+
 
 ## 참고
 
