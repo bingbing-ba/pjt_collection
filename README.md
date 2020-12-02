@@ -2,7 +2,9 @@
 
 이 django pjt는 학생들의 ssafy 관통 프로젝트를 한 페이지에서 모아 보기 위한 pjt입니다.
 
-[ver1.2가 10월 9일 부로 업데이트 되었습니다!](#업데이트이력)
+[ver1.2가 12월 2일 부로 업데이트 되었습니다!](#업데이트이력)
+
+문서에서 이번에 변경된 사항에 대한 항목은 :arrow_up: 아이콘을 붙여두었습니다.
 
 ## contributors
 
@@ -25,12 +27,6 @@
 
 - pjt의 app 이름 또한 통일되어야 합니다. ex) community
 
-- 학생들의 pjt구조는 아래와 같이 통일되어야 합니다.
-
-  - ~~pjt 루트에서 git init을 한 상태여야 합니다.~~
-
-  - ※ pjt안에 pjt 루트 폴더가 있는 형태도 지원하게 되었습니다.
-
 - 이 프로젝트의 `requirements.txt` 외에도 학생들이 3rd party 모듈을 사용했다면 해당 모듈이 설치되어 있어야 올바로 동작 합니다.
 
 - google spread sheet에 아래와 같이 학생들의 이름과 labssafy 유저네임을 준비합니다.
@@ -43,13 +39,19 @@
 
    ![studentCSV](README.assets/studentCSV.png)
 
-2. `python clone.py [pjt 이름]` 로 학생들의 pjt를 clone합니다.
+2. `$ python clone.py [pjt 이름]` 로 학생들의 pjt를 clone합니다.
 
-   - 학생들의 repo를 clone 받는 데 실패하면 아래 사진과 같은 목록이 출력됩니다. 해당 학생의 repo를 확인 후 문제점을 해결했다면 다시 같은 명령어(`python clone.py [pjt 이름]`)를 실행하면 됩니다.
+   - ~~학생들의 repo를 clone 받는 데 실패하면 아래 사진과 같은 목록이 출력됩니다. 해당 학생의 repo를 확인 후 문제점을 해결했다면 다시 같은 명령어(`python clone.py [pjt 이름]`)를 실행하면 됩니다.~~
+
+   - :arrow_up: clone 실패 학생 목록이 `results.txt`에 따로 저장되게 되었습니다. 터미널에는 몇 명이 실패했는지만 출력됩니다.
+
+   - :arrow_up: clone과 동시에 `username: happy, password: 1234` 인 수퍼유저가 생성됩니다. `clone.py` 의 `SUPER_USERNAME` 과 `SUPER_PASSWORD` 를 수정하면 원하는 유저네임과 비밀번호를 설정하실 수 있습니다.
 
      ![cloneResult](README.assets/cloneResult.png)
 
-3. `python manage.py runproject [pjt 이름] [port]` 을 통해 서버를 켤 수 있습니다. 여기서 `port`는 생략 가능하며, 기본 값으로 8080이 세팅되어 있습니다.
+3. `$ python manage.py runproject [pjt 이름] [port]` 을 통해 서버를 켤 수 있습니다. 여기서 `port`는 생략 가능하며, 기본 값으로 8080이 세팅되어 있습니다.
+
+   - :arrow_up: 기존에 터미널에 표시되던 학생들의 서버 로그를 학생 별 프로젝트 폴더의 `server.log`파일에 저장되도록 하였습니다.
 
    ![runprojectResult](README.assets/runprojectResult.png)
 
@@ -71,8 +73,23 @@
 
     ![readmeNotExist](README.assets/readmeNotExist.png)
 
+11. :arrow_up: 학생들의 pjt에 데이터 시딩이 가능합니다.
+
+    - 명령어:  `$ python manage.py runseed [pjt 이름] --number=10 --app=community ` 
+      - pjt 이름은 필수 요소이며, 반드시 처음에 위치해야 합니다.
+      - `number` 는 몇 개의 데이터를 시딩할지를 결정하며, 생략 가능합니다. default는 10입니다.
+      - `app` 은 시딩할 앱이름으로, 생략 가능합니다. default는 community입니다. 
+      - 예시: `$ python manage.py runseed pjt05`
+    - 학생 별 시드 이력은 각 학생들의 프로젝트 폴더에 `seed.log`로 저장됩니다.
+
+## 업데이트 이력
+
 ## 업데이트이력
 
+- 1.2 (20.12.2)
+  - clone.py 실행 시 학생들 각 pjt에 superuser 생성 (유저네임:happy, password:1234)
+  - 데이터 시딩 기능 추가, 명령어: `$python manage.py runseed [pjt 이름]` 
+  - 학생 터미널 출력 로그 파일로 대체
 - 1.1 (20.10.9)
   - 학생들의 README를 확인할 수 있는 토글 버튼 추가
   - requirements.txt 수정 (by @tony)
