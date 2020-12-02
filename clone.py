@@ -17,7 +17,6 @@ def check_directory(now_dir):
                     os.system(f'rm -rf {dirpath}_sample/')
                 return True
 
-success = []
 failure = []
 
 SUPER_USERNAME = 'happy'
@@ -27,7 +26,6 @@ for name, gitlab_name in get_students():
     print(f'========== {name} ==========')
     result = os.system(f'git clone {BASE_URL}/{gitlab_name}/{DIR_NAME}.git ./{DIR_NAME}/{name}')
     if result == 0:
-        success.append(name)
         # manage.py의 경로를 확인합니다.
         check_directory(f'./{DIR_NAME}/{name}/')
         
@@ -35,7 +33,7 @@ for name, gitlab_name in get_students():
         os.system(f'python ./{DIR_NAME}/{name}/manage.py makemigrations')
         os.system(f'python ./{DIR_NAME}/{name}/manage.py migrate') 
         # super유저 설정
-        os.system(f'echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\'{SUPER_USERNAME}\', None, \'{SUPER_PASSWORD}\')" | python ./{DIR_NAME}/{name}/manage.py shell')
+        os.system(f'python ./{DIR_NAME}/{name}/manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\'{SUPER_USERNAME}\', None, \'{SUPER_PASSWORD}\')"')
     else:
         failure.append(name)
     print()
