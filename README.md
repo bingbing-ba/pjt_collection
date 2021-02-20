@@ -37,9 +37,8 @@
 
 - google spread sheet에 아래와 같이 학생들의 이름과 labssafy 유저네임을 준비합니다.
 
-  ![studentSpreadSheet](README.assets/studentSpreadSheet.png)
 
-
+![studentSpreadSheet](README.assets/studentSpreadSheet.png)
 
 ## 사용법
 
